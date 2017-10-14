@@ -6,11 +6,23 @@
     <string name="guardar">Guardar</string>
     <string name="limpiar">Limpiar</string>
     <string name="crear">Crear Personas</string>
-    <string name="mensaje">Persona Guardada con exito</string>
+
     <string name="cedula">Cedula</string>
-    <string name="Masculino">Masculinio</string>
+    <string name="Masculino">Masculino</string>
     <string name="Femenino">Femenino</string>
-    >string-array>
+    <string name="Informacion">Informacion</string>
+    <string name="sexo">sexo</string>
+    <string name="Modificar">Modificar</string>
+    <string name="Eliminar">Eliminar</string>
+    <string name="Titulo_Eliminar_Mensaje">Eliminar Persona</string>
+    <string name="Eliminar_mensaje">seguro que desea elimar a esta persona ?</string>
+    <string name="no_vacio_error">Este campo no puede estar vacío</string>
+    <string name="persona_existente_error">Ya existe una persona ingresada con esta cédula</string>
+    <string name="mensaje_guardado">Persona Guardada Exitosamente!</string>
+
+    <string name="existe_mensaje">Ya esta persona esta registrada</string>
+    <string name="SI_eliminar_persona">Si,Eliminar</string>
+    <string name="no_eliminar_persona">NO</string>
     <string-array name="sexo">
         <item>@string/Femenino</item>
         <item>@string/Masculino</item>
