@@ -3,37 +3,46 @@ package com.example.android.personasmaterialdiplomado;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
 public class CrearPersonas extends AppCompatActivity {
-    private EditText cajaNombre;
-    private EditText cajaApellido;
-    private TextInputLayout icajaApellido,icajaNombre;
+    private EditText txtNombre;
+    private EditText txtApellido;
+    private EditText txtCedula;
+    private TextInputLayout cajaApellido, cajaNombre, cajaCedula;
 
     private ArrayList<Integer>fotos;
+    private ArrayAdapter<String>adapter;
+    private Spinner sexo;
     private Resources res;
+    private String []opc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_personas);
 
-
-        cajaNombre = (EditText)findViewById(R.id.txtNombre);
-        cajaApellido = (EditText)findViewById(R.id.txtApellido);
-        icajaNombre = (TextInputLayout)findViewById(R.id.cajaNombre);
-        icajaApellido = (TextInputLayout)findViewById(R.id.cajaApellido);
+        txtCedula = (EditText)findViewById(R.id.txtCedula);
+        txtNombre = (EditText)findViewById(R.id.txtNombre);
+        txtApellido = (EditText)findViewById(R.id.txtApellido);
+        cajaNombre = (TextInputLayout)findViewById(R.id.cajaApellido);
+        cajaNombre = (TextInputLayout)findViewById(R.id.cajaNombre);
+        cajaApellido = (TextInputLayout)findViewById(R.id.cajaApellido);
         res= this.getResources();
+        sexo = (Spinner)findViewById(R.id.cmbsexo);
+        opc= res.getStringArray(R.array.sexo);
+        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,opc);
+        sexo.setAdapter(adapter);
+
+
 
         fotos = new ArrayList<>();
         fotos.add(R.drawable.images);
@@ -42,7 +51,7 @@ public class CrearPersonas extends AppCompatActivity {
     }
 
     public void guardar(View V){
-        Persona p = new Persona(Metodos.fotoAleatoria(fotos),cajaNombre.getText().toString(),cajaApellido.getText().toString());
+        Persona p = new Persona(Metodos.fotoAleatoria(fotos),txtCedula.getText().toString(),txtNombre.getText().toString(), txtApellido.getText().toString(),sexo.getSelectedItemPosition());
         p.guardar();
         Snackbar.make(V,res.getString(R.string.mensaje),Snackbar.LENGTH_LONG)
                 .setAction("Action",null).show();
@@ -54,9 +63,12 @@ public class CrearPersonas extends AppCompatActivity {
     }
 
     private  void limpiar(){
-        cajaNombre.setText("");
-        cajaApellido.setText("");
-        cajaNombre.requestFocus();
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        sexo.setSelection(0);
+        txtNombre.requestFocus();
+
 
     }
     public void onBackPressed(){

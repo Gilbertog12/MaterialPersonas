@@ -10,8 +10,9 @@
     <string name="cedula">Cedula</string>
     <string name="Masculino">Masculinio</string>
     <string name="Femenino">Femenino</string>
-    >string-array><string-array name="sexo">
-    <item>@string/Femenino</item>
-    <item>@string/Masculino</item>
-</string-array>
+    >string-array>
+    <string-array name="sexo">
+        <item>@string/Femenino</item>
+        <item>@string/Masculino</item>
+    </string-array>
 </resources>
