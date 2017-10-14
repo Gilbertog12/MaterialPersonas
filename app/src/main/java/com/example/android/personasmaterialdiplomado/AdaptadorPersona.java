@@ -19,10 +19,12 @@ import java.util.ArrayList;
 public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.PersonaViewHolder> {
     private ArrayList<Persona> personas;
     private Resources res;
+    private onpersonaClickLIstener clickLIstener;
 
-    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas){
+    public AdaptadorPersona(Context contexto, ArrayList<Persona> personas,onpersonaClickLIstener clickLIstener){
         this.personas=personas;
         res = contexto.getResources();
+        this.clickLIstener = clickLIstener;
     }
 
     @Override
@@ -38,6 +40,13 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
         holder.cedula.setText(p.getCedula());
         holder.nombre.setText(p.getNombre());
         holder.apellido.setText(p.getApellido());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickLIstener.onpersonaClick(p);
+            }
+        });
     }
 
     @Override
@@ -50,10 +59,12 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
         private TextView cedula;
         private TextView nombre;
         private TextView apellido;
+        private  View v;
 
 
         public PersonaViewHolder(View itemView){
             super(itemView);
+            v= itemView;
 
             foto = (ImageView)itemView.findViewById(R.id.imgFoto);
             cedula=(TextView)itemView.findViewById(R.id.lblCedula);
@@ -62,4 +73,6 @@ public class AdaptadorPersona extends RecyclerView.Adapter<AdaptadorPersona.Pers
 
         }
     }
+    public  interface  onpersonaClickLIstener{
+            void onpersonaClick(Persona p);}
 }

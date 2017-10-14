@@ -17,6 +17,7 @@ public class CrearPersonas extends AppCompatActivity {
     private EditText txtNombre;
     private EditText txtApellido;
     private EditText txtCedula;
+
     private TextInputLayout cajaApellido, cajaNombre, cajaCedula;
 
     private ArrayList<Integer>fotos;
