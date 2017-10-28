@@ -15,12 +15,25 @@ public class Metodos {
         fotoSeleccionada = r.nextInt(fotos.size());
         return fotos.get(fotoSeleccionada);
     }
-    public static boolean existencia_persona(ArrayList<Persona>personas ,String cedula){
+
+    public static boolean existencia_persona(ArrayList<Persona> personas, String cedula){
         for (int i = 0; i <personas.size() ; i++) {
-            if (personas.get(i).getCedula().equals(cedula));
-
+            if(personas.get(i).getCedula().equals(cedula)){
+                return true;
+            }
         }
+        return false;
+    }
+    public static boolean persona_editar(ArrayList<Persona> personas, String cedulaE, String cedulaActual){
 
-        return true;
+        if (!cedulaActual.equals(cedulaE)) {
+            if (existencia_persona(personas, cedulaE)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
     }
 }

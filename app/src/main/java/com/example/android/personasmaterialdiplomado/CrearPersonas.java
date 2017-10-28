@@ -53,7 +53,7 @@ public class CrearPersonas extends AppCompatActivity {
         fotos.add(R.drawable.images3);
     }
 
-    public void guadar(View v){
+    public void guardar(View v){
 
         if(validar()) {
             Persona p = new Persona(Metodos.fotoAleatoria(fotos), txtCedula.getText().toString(),

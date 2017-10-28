@@ -18,7 +18,7 @@ public class DetallePersona extends AppCompatActivity {
     private CollapsingToolbarLayout collapsingToolbarLayout;
     private Persona p;
     private String cedula,nombre,apellido;
-    private int Fot,sexo;
+    private int fot,sexo;
     private Bundle bundle;
     private Intent I;
     private ImageView foto;
@@ -33,9 +33,7 @@ public class DetallePersona extends AppCompatActivity {
         setContentView(R.layout.activity_detalle_persona);
 
 
-       // Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
-       // setSupportActionBar(toolbar);
-       // getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         ced=(TextView)findViewById(R.id.lblCedulad);
         nomb =(TextView)findViewById(R.id.lblbNombred);
         app=(TextView)findViewById(R.id.lblApellidod);
@@ -50,12 +48,12 @@ public class DetallePersona extends AppCompatActivity {
         cedula=bundle.getString("cedula");
         nombre=bundle.getString("nombre");
         apellido=bundle.getString("apellido");
-        Fot = bundle.getInt("foto");
+        fot = bundle.getInt("foto");
         sexo = bundle.getInt("sexo");
 
         opc=resources.getStringArray(R.array.sexo);
 
-        foto.setImageDrawable(ResourcesCompat.getDrawable(resources,Fot,null));
+        foto.setImageDrawable(ResourcesCompat.getDrawable(resources,fot,null));
         collapsingToolbarLayout.setTitle(nombre+" "+apellido);
         ced.setText(cedula);
         nomb.setText(nombre);
@@ -89,6 +87,17 @@ public class DetallePersona extends AppCompatActivity {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+    public void editar(View v){
+        Intent i = new Intent(DetallePersona.this, Modificar_Persona.class);
+        Bundle b2 = new Bundle();
+        b2.putInt("foto",fot);
+        b2.putString("cedula",cedula);
+        b2.putString("nombre",nombre);
+        b2.putString("apellido",apellido);
+        b2.putInt("sexo",sexo);
+        i.putExtra("datos",b2);
+        startActivity(i);
     }
 
     public void onBackPressed(){

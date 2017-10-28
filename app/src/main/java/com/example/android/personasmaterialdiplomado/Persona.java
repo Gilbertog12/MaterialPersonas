@@ -73,4 +73,10 @@ public class Persona {
     public void setFoto(int foto) {
         this.foto = foto;
     }
+
+
+
+    public void editar(){
+        Datos.editarPersona(this);
+    }
 }
